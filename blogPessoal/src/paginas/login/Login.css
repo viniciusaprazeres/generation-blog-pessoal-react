@@ -1,9 +1,13 @@
+.textoLogin {
+    font-weight: bold !important;
+}
+
 .text-decoration-none {
     text-decoration: none;
 }
 
 .imagemLogin {
-    background-image: url("https://i.imgur.com/jAZOVhd.jpg");
+    background-image: url(https://i.imgur.com/jAZOVhd.jpg);
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
