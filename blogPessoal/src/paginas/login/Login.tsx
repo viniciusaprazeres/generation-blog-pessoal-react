@@ -3,7 +3,7 @@ import { Button, Grid, TextField, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom'
 
-import { api } from '../../services/Service';
+import { login } from '../../services/Service';
 
 import useLocalStorage from 'react-use-localstorage'
 
@@ -43,10 +43,10 @@ function Login() {
     event.preventDefault()
 
     try {
-      const resposta = await api.post('/usuarios/logar', usuarioLogin)
-      setToken(resposta.data.token)
 
-      alert('Usuário logado com sucessor!')
+      await login('/usuarios/logar', usuarioLogin, setToken)
+      alert('Usuário logado com sucesso!')
+
     } catch (error) {
       alert('Dados do usuário inconsistentes. Erro ao logar!')
     }
