@@ -18,14 +18,16 @@ function CadastroUsuario() {
         id: 0,
         nome: '',
         usuario: '',
-        senha: ''
+        senha: '',
+        foto: ''
     })
 
     const [usuarioResult, setUsuarioResult] = useState<Usuario>({
         id: 0,
         nome: '',
         usuario: '',
-        senha: ''
+        senha: '',
+        foto: ''
     })
 
     const [confirmarSenha, setConfirmarSenha] = useState<String>("")
@@ -86,6 +88,7 @@ function CadastroUsuario() {
                         <TextField value={usuario.usuario} onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}  id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth />
                         <TextField value={usuario.senha} onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}  id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
                         <TextField value={confirmarSenha} onChange={(event: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(event)}  id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth />
+                        <TextField value={usuario.foto} onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}  id='usuario' label='Foto (URL)' variant='outlined' name='foto' margin='normal' fullWidth />
                         <Box marginTop={2} textAlign='center'>
                             <Link to='/login' className='text-decoraton-none'>
                                 <Button variant='contained' color='secondary' className='botaoCancelar'>
