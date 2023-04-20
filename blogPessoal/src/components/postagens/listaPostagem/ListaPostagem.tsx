@@ -8,7 +8,7 @@ import useLocalStorage from 'react-use-localstorage'
 import { getAll } from '../../../services/Service'
 import { Postagem } from '../../../models/Postagem'
 
-function ListaPostagens() {
+function ListaPostagem() {
 
   const history = useNavigate()
 
@@ -74,4 +74,4 @@ function ListaPostagens() {
   )
 }
 
-export default ListaPostagens
+export default ListaPostagem

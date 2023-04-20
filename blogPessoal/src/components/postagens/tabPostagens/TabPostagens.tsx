@@ -8,7 +8,7 @@ import TabPanel from '@material-ui/lab/TabPanel';
 
 import {Box} from '@mui/material';
 
-import ListaPostagens from '../listaPostagens/ListaPostagens';
+import ListaPostagem from '../listaPostagem/ListaPostagem';
 import './TabPostagens.css'
 import { Tabs, Typography } from '@material-ui/core';
 
