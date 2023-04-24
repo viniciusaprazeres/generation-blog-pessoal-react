@@ -1,16 +1,17 @@
 import React from 'react'
-
 import AppBar from '@material-ui/core/AppBar';
 import Tab from '@material-ui/core/Tab';
 import TabContext from '@material-ui/lab/TabContext';
 import TabList from '@material-ui/lab/TabList';
 import TabPanel from '@material-ui/lab/TabPanel';
-
 import {Box} from '@mui/material';
+import { Tabs, Typography } from '@material-ui/core';
 
 import ListaPostagem from '../listaPostagem/ListaPostagem';
+
+
 import './TabPostagens.css'
-import { Tabs, Typography } from '@material-ui/core';
+
 
 function TabPostagens() {
 
@@ -32,7 +33,7 @@ function TabPostagens() {
                 </AppBar>
                 <TabPanel value="1" >
                     <Box display="flex" flexWrap="wrap" justifyContent="center">
-                        <ListaPostagens />
+                        <ListaPostagem />
                     </Box>
                 </TabPanel>
                 <TabPanel value="2">

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-
 import { Box, Button, Card, CardActions, CardContent, Typography } from '@mui/material'
-
-import './ListaPostagens.css'
 import { Link, useNavigate } from 'react-router-dom'
 import useLocalStorage from 'react-use-localstorage'
 import { getAll } from '../../../services/Service'
 import { Postagem } from '../../../models/Postagem'
+
+
+import './ListaPostagem.css'
 
 function ListaPostagem() {
 

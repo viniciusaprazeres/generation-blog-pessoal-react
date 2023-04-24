@@ -2,15 +2,13 @@ import React, { ChangeEvent, useState, useEffect } from 'react'
 import { Button, Grid, TextField, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom'
+import useLocalStorage from 'react-use-localstorage'
+
+import UsuarioLogin from '../../models/UsuarioLogin';
 
 import { login } from '../../services/Service';
 
-import useLocalStorage from 'react-use-localstorage'
-
 import './Login.css'
-import UsuarioLogin from '../../models/UsuarioLogin';
-
-
 
 function Login() {
 
