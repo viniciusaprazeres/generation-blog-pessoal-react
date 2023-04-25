@@ -2,19 +2,26 @@ import React, { useEffect, useState } from "react";
 import { Grid, Typography, Button, Card, Box } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
+
 import { Tema } from "../../../models/Tema";
+
 import { deleteId, getId } from "../../../services/Service";
 
+import './DeletarTema.css'
+
 function DeletarTema() {
+
   const history = useNavigate();
+
   const [token, setToken] = useLocalStorage("token");
+
   const { id } = useParams<{ id: string }>();
 
   const [tema, setTema] = useState<Tema>();
 
   useEffect(() => {
     if (token === "") {
-      alert("Sem token não né meu bom");
+      alert("Você precisa estar logado!");
       history("/login");
     }
   }, []);
@@ -39,7 +46,7 @@ function DeletarTema() {
         Authorization: token,
       },
     });
-    alert("Tema deletado com sucesso, eu acho");
+    alert("Tema deletado com sucesso.");
     history("/temas");
   }
 
