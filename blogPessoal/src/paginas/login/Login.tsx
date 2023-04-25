@@ -9,12 +9,16 @@ import UsuarioLogin from '../../models/UsuarioLogin';
 import { login } from '../../services/Service';
 
 import './Login.css'
+import { useDispatch } from 'react-redux';
+import { addToken } from '../../store/tokens/action';
 
 function Login() {
 
   const history = useNavigate();
 
-  const [token, setToken] = useLocalStorage('token')
+  const dispatch = useDispatch();
+
+  const [token, setToken] = useState('')
 
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
   {
@@ -32,7 +36,8 @@ function Login() {
   }
 
   useEffect(() => {
-    if(token != ''){
+    if(token !== ''){
+      dispatch(addToken(token))
       history('/home')
     }
   }, [token])
