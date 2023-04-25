@@ -36,7 +36,7 @@ function App() {
           
           <Route path='/cadastrarpostagem' element={<CadastroPostagem />} />
           <Route path='/editarpostagem/:id' element={<CadastroPostagem />} />
-          <Route path='/apagarpostagem/:id' element={<CadastroPostagem />} />
+          <Route path='/deletarpostagem/:id' element={<CadastroPostagem />} />
           
           <Route path='/cadastrartema' element={<CadastroTema />} />
           <Route path='/editartema/:id' element={<CadastroTema />} />

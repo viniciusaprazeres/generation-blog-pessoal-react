@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { Box, Button, Card, CardActions, CardContent, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+} from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom'
 import useLocalStorage from 'react-use-localstorage'
 import { getAll } from '../../../services/Service'
 import { Postagem } from '../../../models/Postagem'
-
 
 import './ListaPostagem.css'
 
@@ -17,17 +23,17 @@ function ListaPostagem() {
   const [token, setToken] = useLocalStorage('token')
 
 
-  async function getAllTemas() {
+  async function getAllPostagens() {
     await getAll('/postagens', setPostagens, {
       headers: {
-        Authorization: token
+        Authorization: token,
       }
     })
   }
 
 
   useEffect(() => {
-    getAllTemas()
+    getAllPostagens()
   }, [postagens.length])
 
 
@@ -40,37 +46,41 @@ function ListaPostagem() {
 
 
   return (
-    <>
-      {postagens.map((postagem) => (
-        <Box m={4}>
-          <Card >
+    <div className='listaPost'>
+      {postagens.map((post) => (
+        <Box m={4} >
+          <Card variant='outlined' style={{padding: '8px'}}>
             <CardContent>
               <Typography color="textSecondary" gutterBottom>
-                Postagens:
-              </Typography>
-              <Typography color="textSecondary" gutterBottom>
-                {postagem.titulo}
+                {post.titulo}
               </Typography>
               <Typography variant="h5" component="h2">
-                {postagem.texto}
+                {post.texto}
               </Typography>
               <Typography variant="body1" component="p">
-                {postagem.tema}
+                Tema: {post.tema?.descricao}
               </Typography>
-
+              <Typography variant="body1" component="p">
+                {/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat */}
+                Data: {Intl.DateTimeFormat('pt-BR', {dateStyle: 'full', timeStyle: 'medium'}).format(new Date(post.data))}
+              </Typography>
             </CardContent>
             <CardActions>
-              <Link to={`/atualizarpostagem/${postagem.id}`} className='text-decoration-none'> {/* O link pode estar incorreto no back-end! */}
-                <Button color='primary' variant='contained' size="small">Atualizar</Button>
+              <Link to={`/editarpostagem/${post.id}`}>
+              <Button color="primary" variant="contained" size="small" fullWidth>
+                Editar
+              </Button>
               </Link>
-              <Link to={`/deletarpostagem/${postagem.id}`} className='text-decoration-none'> {/* O link pode estar incorreto no back-end! */}
-                <Button color='secondary' variant='contained' size="small">Deletar</Button>
+              <Link to={`/deletarpostagem/${post.id}`}>
+              <Button color="error" variant="contained" size="small" fullWidth>
+                Deletar
+              </Button>
               </Link>
             </CardActions>
           </Card>
         </Box>
       ))}
-    </>
+    </div>
   )
 }
 
