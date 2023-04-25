@@ -44,7 +44,6 @@ export const put = async (
   setDados(resposta.data);
 };
 
-
 export const deleteId = async (url: any, headers: any) => {
-  await api.delete(url, headers)
-}
+  await api.delete(url, headers);
+};

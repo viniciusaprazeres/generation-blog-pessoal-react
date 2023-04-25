@@ -1,13 +1,18 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
+import { Box, Grid, Typography } from "@mui/material";
 import { Button, TextField } from "@material-ui/core";
 import { useNavigate, useParams } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
+
 import { Tema } from "../../../models/Tema";
+
 import { getId, post, put } from "../../../services/Service";
-import { Box, Grid, Typography } from "@mui/material";
+
+import './CadastroTema.css'
 
 function CadastroTema() {
   const history = useNavigate();
+
   const [token, setToken] = useLocalStorage("token");
 
   const { id } = useParams<{ id: string }>();
@@ -39,11 +44,11 @@ function CadastroTema() {
   });
 
   useEffect(() => {
-    if (token === "") {
-      alert("Sem token não né meu bom");
+    if (token === '') {
+      alert("Você precisa estar logado.");
       history("/login");
     }
-  }, []);
+  }, [token]);
 
   async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -55,10 +60,10 @@ function CadastroTema() {
             Authorization: token,
           },
         });
-        alert("Tema atualizado com sucesso");
+        alert("Tema atualizado com sucesso.");
         history("/temas");
       } catch (error) {
-        alert("Deu ruim");
+        alert("Erro! O tema não foi atualizado.");
       }
     } else {
       try {
@@ -67,10 +72,10 @@ function CadastroTema() {
             Authorization: token,
           },
         });
-        alert("Tema cadastrado com sucesso");
+        alert("Tema cadastrado com sucesso.");
         history("/temas");
       } catch (error) {
-        alert("Deu ruim");
+        alert("Erro! O tema não foi cadastrado.");
       }
     }
   }
