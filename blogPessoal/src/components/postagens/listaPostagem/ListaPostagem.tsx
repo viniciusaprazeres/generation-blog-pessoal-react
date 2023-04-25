@@ -13,6 +13,8 @@ import { getAll } from '../../../services/Service'
 import { Postagem } from '../../../models/Postagem'
 
 import './ListaPostagem.css'
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function ListaPostagem() {
 
@@ -20,8 +22,9 @@ function ListaPostagem() {
 
   const [postagens, setPostagens] = useState<Postagem[]>([])
 
-  const [token, setToken] = useLocalStorage('token')
-
+  const token = useSelector<TokenState["token"]>(
+    (state) => state.token
+  )
 
   async function getAllPostagens() {
     await getAll('/postagens', setPostagens, {
