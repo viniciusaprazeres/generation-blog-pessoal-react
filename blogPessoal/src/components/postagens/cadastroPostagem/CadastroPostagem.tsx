@@ -21,9 +21,13 @@ import { getAll, getId, put, post } from '../../../services/Service';
 import './CadastroPostagem.css';
 
 function CadastroPostagem() {
+
   const history = useNavigate();
+
   const [token, setToken] = useLocalStorage("token");
+
   const { id } = useParams<{ id: string }>();
+  
   const [temas, setTemas] = useState<Tema[]>([]);
 
   const [postagem, setPostagem] = useState<Postagem>({

@@ -25,7 +25,6 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <Provider store={store}>
       <BrowserRouter>
         <Navbar />
         <div style={{ minHeight: '100vh' }}>
@@ -49,7 +48,6 @@ function App() {
         </div>
         <Footer />
       </BrowserRouter>
-    <Provider/>
   )
 }
 
