@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Provider } from 'react-redux';
 
 import Navbar from './components/estaticos/navbar/Navbar';
 import Footer from './components/estaticos/footer/Footer'
@@ -12,19 +13,16 @@ import CadastroTema from './components/temas/cadastroTema/CadastroTema';
 import CadastroPostagem from './components/postagens/cadastroPostagem/CadastroPostagem';
 import DeletarTema from './components/temas/deletarTema/DeletarTema';
 
+import store from './store/store';
+
 import './App.css'
 import './components/estaticos/navbar/Navbar.css'
-
-import store from './store/store';
-import { Provider } from 'react-redux';
-
-
-
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
+    <Provider store={store}>
       <BrowserRouter>
         <Navbar />
         <div style={{ minHeight: '100vh' }}>
@@ -48,7 +46,8 @@ function App() {
         </div>
         <Footer />
       </BrowserRouter>
-  )
+    </Provider>
+  );
 }
 
 export default App

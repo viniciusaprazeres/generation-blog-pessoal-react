@@ -8,7 +8,6 @@ import {
   Typography,
 } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom'
-import useLocalStorage from 'react-use-localstorage'
 import { getAll } from '../../../services/Service'
 import { Postagem } from '../../../models/Postagem'
 
@@ -20,11 +19,11 @@ function ListaPostagem() {
 
   const history = useNavigate()
 
-  const [postagens, setPostagens] = useState<Postagem[]>([])
-
-  const token = useSelector<TokenState["token"]>(
+  const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
-  )
+  );
+
+  const [postagens, setPostagens] = useState<Postagem[]>([])
 
   async function getAllPostagens() {
     await getAll('/postagens', setPostagens, {

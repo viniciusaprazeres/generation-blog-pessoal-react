@@ -1,24 +1,28 @@
 import React, { useEffect } from "react";
 import { Typography, Grid, Button } from "@material-ui/core";
 import { Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import TabPostagens from "../../components/postagens/tabPostagens/TabPostagens";
 import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem";
 
+import { TokenState } from "../../store/tokens/tokensReducer";
+
 import "./Home.css";
-import { useNavigate } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
 
 function Home() {
   
-  let navigate = useNavigate();
+  const history = useNavigate();
   
-  const [token, setToken] = useLocalStorage("token");
+  const token = useSelector<TokenState, TokenState["token"]>(
+    (state) => state.token
+  );
 
   useEffect(() => {
-    if (token == "") {
+    if (token === "") {
       alert("Você precisa estar logado.");
-      navigate("/login");
+      history("/login");
     }
   }, [token]);
 
@@ -29,6 +33,7 @@ function Home() {
         direction="row"
         justifyContent="center"
         alignItems="center"
+        className="caixa"
         style={{ backgroundColor: "var(--blue-600)" }}
       >
         <Grid alignItems="center" item xs={6}>
@@ -39,7 +44,7 @@ function Home() {
               color="textPrimary"
               component="p"
               align="center"
-              style={{ color: "white", fontWeight: "bold" }}
+              className="titulo"
             >
               Seja bem vindo(a)!
             </Typography>
@@ -49,9 +54,9 @@ function Home() {
               color="textPrimary"
               component="h5"
               align="center"
-              style={{ color: "white", fontWeight: "bold" }}
+              className="titulo"
             >
-              expresse aqui os seus pensamentos e opiniões!
+              Expresse aqui os seus pensamentos e opiniões!
             </Typography>
           </Box>
           <Box display="flex" justifyContent="center">
@@ -60,11 +65,7 @@ function Home() {
             </Box>
             <Button
               variant="outlined"
-              style={{
-                borderColor: "white",
-                backgroundColor: "var(--blue-600)",
-                color: "white",
-              }}
+              className="botaoVerPostagens"
             >
               Ver Postagens
             </Button>
@@ -74,7 +75,7 @@ function Home() {
           <img
             src="https://i.imgur.com/XEmGzkd.png"
             alt=""
-            className="fotoHome"
+            className="imagemHome"
           />
         </Grid>
         <Grid xs={12} style={{ backgroundColor: "white" }}>

@@ -1,5 +1,5 @@
 .caixa {
-    background-color: #3F51B5;
+    background-color: #3F51B5 !important;
 }
 
 .titulo {
@@ -7,7 +7,7 @@
     font-weight: bold !important;
 }
 
-.botao {
+.botaoVerPostagens {
     border-color: white !important;
     background-color: #3F51B5 !important;
     color: white !important;
@@ -16,3 +16,10 @@
 .postagens {
     background-color: white;
 }
+
+.imagemHome {
+    width: max(350px, 65%);
+    margin: 0 auto;
+    display: block;
+    transform: rotateY(180deg);
+  }
