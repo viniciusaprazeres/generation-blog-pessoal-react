@@ -7,6 +7,9 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import "./Footer.css";
 
 function Footer() {
+
+  var footerComponent;
+  
   return (
     <>
       <Grid

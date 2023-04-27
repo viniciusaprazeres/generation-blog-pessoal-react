@@ -27,6 +27,8 @@ function Navbar() {
     history('/login')
   }
 
+  var navbarComponent;
+
   return (
     <>
       <AppBar position="static">
