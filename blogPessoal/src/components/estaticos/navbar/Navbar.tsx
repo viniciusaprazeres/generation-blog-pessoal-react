@@ -24,8 +24,7 @@ function Navbar() {
 
   function logout() {
     dispatch(addToken(''))
-    // alert('Usuário deslogado.')
-    toast('Usuário deslogado.', {
+    toast.success('Usuário deslogado.', {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
