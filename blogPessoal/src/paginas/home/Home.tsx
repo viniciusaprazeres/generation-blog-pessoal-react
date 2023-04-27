@@ -3,6 +3,7 @@ import { Typography, Grid, Button } from "@material-ui/core";
 import { Box } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import TabPostagens from "../../components/postagens/tabPostagens/TabPostagens";
 import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem";
@@ -20,7 +21,17 @@ function Home() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado.");
+      // alert("Você precisa estar logado.");
+      toast.warn('Você precisa estar logado.', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       history("/login");
     }
   }, [token]);

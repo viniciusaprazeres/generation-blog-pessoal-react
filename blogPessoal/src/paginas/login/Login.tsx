@@ -3,6 +3,7 @@ import { Button, Grid, TextField, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import UsuarioLogin from '../../models/UsuarioLogin';
 
@@ -10,6 +11,7 @@ import { login } from '../../services/Service';
 import { addToken } from '../../store/tokens/action';
 
 import './Login.css'
+
 
 function Login() {
 
@@ -47,10 +49,28 @@ function Login() {
     try {
 
       await login('/usuarios/logar', usuarioLogin, setToken)
-      alert('Usuário logado com sucesso!')
+      toast.success('Usuário logado com sucesso!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
 
     } catch (error) {
-      alert('Dados do usuário inconsistentes. Erro ao logar!')
+      toast.warn('Dados do usuário inconsistentes. Não foi possível logar!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     }
   }
 

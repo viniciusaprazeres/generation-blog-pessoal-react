@@ -1,12 +1,14 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Grid, Box, Typography, Button, TextField } from '@material-ui/core'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import Usuario from '../../models/Usuario'
 
 import { cadastrarUsuario } from '../../services/Service'
 
 import './CadastroUsuario.css'
+
 
 
 function CadastroUsuario() {
@@ -47,12 +49,42 @@ function CadastroUsuario() {
         if (confirmarSenha === usuario.senha) {
             try {
                 await cadastrarUsuario('/usuarios/cadastrar', usuario, setUsuarioResult)
-                alert('Usuário cadastrado com sucesso')
+                toast.success('Usuário cadastrado com sucesso.', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             } catch (error) {
-                alert('Por favor, verifique os campos')
+                toast.warn('Dados inconsistentes! Por favor, verifique os campos.', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+                  history("/login");
             }
         } else {
-            alert('As senhas não coincidem')
+            alert('')
+            toast.warn('As senhas não coincidem!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+              history("/login");
             setConfirmarSenha('')
             setUsuario({
                 ...usuario,

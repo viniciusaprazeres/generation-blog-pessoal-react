@@ -8,12 +8,15 @@ import {
   Typography,
 } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+
+import { Postagem } from '../../../models/Postagem' 
+
 import { getAll } from '../../../services/Service'
-import { Postagem } from '../../../models/Postagem'
 
 import './ListaPostagem.css'
-import { useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function ListaPostagem() {
 
@@ -41,7 +44,16 @@ function ListaPostagem() {
 
   useEffect(() => {
     if (token === '') {
-      alert('Você precisa estar logado!')
+      toast.warn('Você precisa estar logado!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       history('/login')
     }
   }, [token])

@@ -5,6 +5,7 @@ import { Box } from '@mui/material';
 import { Tema } from '../../../models/Tema';
 import { getAll } from '../../../services/Service';
 import useLocalStorage from 'react-use-localstorage';
+import { toast } from 'react-toastify';
 
 import './ListaTema.css'
 
@@ -15,7 +16,6 @@ function ListaTema() {
   const [temas, setTemas] = useState<Tema[]>([])
 
   const [token, setToken] = useLocalStorage('token')
-
 
   async function getAllTemas() {
     await getAll('/temas', setTemas, {
@@ -33,7 +33,16 @@ function ListaTema() {
 
   useEffect(() => {
     if (token === '') {
-      alert('Você precisa estar logado!')
+      toast.warn('Você precisa estar logado!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       history('/login')
     }
   }, [token])

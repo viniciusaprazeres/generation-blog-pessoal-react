@@ -9,8 +9,8 @@ import {
   CardContent,
 } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import { Tema } from "../../../models/Tema";
 import { Postagem } from "../../../models/Postagem";
@@ -19,6 +19,7 @@ import { TokenState } from "../../../store/tokens/tokensReducer";
 import { getId, deleteId } from "../../../services/Service";
 
 import "./DeletaPostagem.css";
+
 
 function DeletaPostagem() {
 
@@ -34,7 +35,16 @@ function DeletaPostagem() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado!");
+      toast.warn('Você precisa estar logado!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       history("/login");
     }
   }, []);
@@ -59,7 +69,16 @@ function DeletaPostagem() {
         Authorization: token,
       },
     });
-    alert("Postagem deletada com sucesso.");
+    toast.success('Postagem deletada com sucesso!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
     history("/postagens");
   }
 

@@ -11,6 +11,7 @@ import {
   FormHelperText,
 } from "@mui/material";
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from "react-toastify";
 import useLocalStorage from 'react-use-localstorage';
 
 import { Postagem } from '../../../models/Postagem';
@@ -19,6 +20,7 @@ import { Tema } from '../../../models/Tema';
 import { getAll, getId, put, post } from '../../../services/Service';
 
 import './CadastroPostagem.css';
+
 
 function CadastroPostagem() {
 
@@ -45,7 +47,16 @@ function CadastroPostagem() {
 
   useEffect(() => {
     if (token === "") {
-      alert("sem token não rola");
+      toast.warn('Você precisa estar logado!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       history("/login");
     }
   });
@@ -98,10 +109,28 @@ function CadastroPostagem() {
             Authorization: token,
           },
         });
-        alert("Postagem atualizada com sucesso");
+        toast.success('Postagem atualizada com sucesso!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
         history("/postagens");
       } catch (error) {
-        alert("Falha ao atualizar a postagem");
+        toast.error('Falha ao atualizar a postagem!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
     } else {
       try {
@@ -110,10 +139,28 @@ function CadastroPostagem() {
             Authorization: token,
           },
         });
-        alert("Postagem cadastrada com sucesso");
+        toast.success('Postagem cadastrada com sucesso!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
         history("/postagens");
       } catch (error) {
-        alert("Falha ao cadastrar a postagem");
+        toast.error('Falha ao cadastrar a postagem!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
     }
   }
