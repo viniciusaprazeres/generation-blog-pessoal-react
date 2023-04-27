@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Typography, Grid, Button } from "@material-ui/core";
 import { Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import TabPostagens from "../../components/postagens/tabPostagens/TabPostagens";
@@ -12,9 +12,8 @@ import { TokenState } from "../../store/tokens/tokensReducer";
 import "./Home.css";
 
 function Home() {
-  
   const history = useNavigate();
-  
+
   const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
   );
@@ -63,12 +62,11 @@ function Home() {
             <Box marginRight={1}>
               <ModalPostagem />
             </Box>
-            <Button
-              variant="outlined"
-              className="botaoVerPostagens"
-            >
-              Ver Postagens
-            </Button>
+            <Link to="/postagens">
+              <Button variant="outlined" className="botaoVerPostagens">
+                Ver Postagens
+              </Button>
+            </Link>
           </Box>
         </Grid>
         <Grid item xs={6}>
