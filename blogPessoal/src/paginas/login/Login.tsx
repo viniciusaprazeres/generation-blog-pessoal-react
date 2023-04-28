@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import UsuarioLogin from '../../models/UsuarioLogin';
 
 import { login } from '../../services/Service';
-import { addToken } from '../../store/tokens/action';
+import { addId, addToken } from '../../store/tokens/action';
 
 import './Login.css'
 
@@ -29,6 +29,13 @@ function Login() {
     token:''
   })
 
+  const [respostaUsuarioLogin, setRespostaUsuarioLogin] = useState<UsuarioLogin>({
+    id: 0,
+    usuario: '',
+    senha: '',
+    token:''
+  })
+
   function updateModel(event: ChangeEvent<HTMLInputElement>){
     setUsuarioLogin({
       ...usuarioLogin,
@@ -43,12 +50,20 @@ function Login() {
     }
   }, [token])
 
+  useEffect(() => {
+    if(respostaUsuarioLogin.token !== ''){
+      dispatch(addToken(respostaUsuarioLogin.token))
+      dispatch(addId(respostaUsuarioLogin.id.toString()))
+      history('/home')
+    }
+  }, [respostaUsuarioLogin.token])
+
   async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
 
     try {
 
-      await login('/usuarios/logar', usuarioLogin, setToken)
+      await login('/usuarios/logar', usuarioLogin, setRespostaUsuarioLogin)
       toast.success('Usuário logado com sucesso!', {
         position: "top-center",
         autoClose: 5000,
