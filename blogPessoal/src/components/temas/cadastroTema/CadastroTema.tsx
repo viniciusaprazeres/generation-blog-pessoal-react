@@ -4,10 +4,12 @@ import { Button, TextField } from "@material-ui/core";
 import { useNavigate, useParams } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 import { Tema } from "../../../models/Tema";
 
 import { getId, post, put } from "../../../services/Service";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 import './CadastroTema.css'
 
@@ -15,7 +17,9 @@ function CadastroTema() {
 
   const history = useNavigate();
 
-  const [token, setToken] = useLocalStorage("token");
+  const token = useSelector<TokenState, TokenState["token"]>(
+    (state) => state.token
+  );
 
   const { id } = useParams<{ id: string }>();
 
@@ -43,7 +47,7 @@ function CadastroTema() {
     if (id !== undefined) {
       getTemaById(id);
     }
-  });
+  }, []);
 
   useEffect(() => {
     if (token === '') {
@@ -131,7 +135,7 @@ function CadastroTema() {
     if (tema.id !== 0) {
       history("/temas");
     }
-  }, [tema.id]);
+  }, []);
 
   return (
     <>
