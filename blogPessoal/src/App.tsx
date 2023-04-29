@@ -19,6 +19,7 @@ import store from "./store/store";
 import "./App.css";
 import "./components/estaticos/navbar/Navbar.css";
 import 'react-toastify/dist/ReactToastify.css';
+import Perfil from "./components/perfil/Perfil";
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/cadastrousuario" element={<CadastroUsuario />} />
+            <Route path="/perfildousuario" element={<Perfil />} />
 
             <Route path="/temas" element={<ListaTema />} />
             <Route path="/postagens" element={<ListaPostagem />} />
