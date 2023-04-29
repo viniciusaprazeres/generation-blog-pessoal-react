@@ -9,8 +9,6 @@ import { cadastrarUsuario } from '../../services/Service'
 
 import './CadastroUsuario.css'
 
-
-
 function CadastroUsuario() {
 
     const history = useNavigate()
@@ -46,7 +44,7 @@ function CadastroUsuario() {
 
     async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
         event.preventDefault()
-        if (confirmarSenha === usuario.senha) {
+        if (confirmarSenha === usuario.senha && usuario.senha.length >= 8) {
             try {
                 await cadastrarUsuario('/usuarios/cadastrar', usuario, setUsuarioResult)
                 toast.success('Usuário cadastrado com sucesso.', {
@@ -70,10 +68,9 @@ function CadastroUsuario() {
                     progress: undefined,
                     theme: "light",
                     });
-                  history("/login");
+                //   history("/login");
             }
         } else {
-            alert('')
             toast.warn('As senhas não coincidem!', {
                 position: "top-center",
                 autoClose: 5000,
@@ -84,7 +81,7 @@ function CadastroUsuario() {
                 progress: undefined,
                 theme: "light",
                 });
-              history("/login");
+            //   history("/login");
             setConfirmarSenha('')
             setUsuario({
                 ...usuario,
