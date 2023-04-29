@@ -9,9 +9,7 @@ import { Tabs, Typography } from '@material-ui/core';
 
 import ListaPostagem from '../listaPostagem/ListaPostagem';
 
-
 import './TabPostagens.css'
-
 
 function TabPostagens() {
 

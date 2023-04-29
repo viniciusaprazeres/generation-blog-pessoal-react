@@ -21,7 +21,6 @@ function Home() {
 
   useEffect(() => {
     if (token === "") {
-      // alert("Você precisa estar logado.");
       toast.warn('Você precisa estar logado.', {
         position: "top-center",
         autoClose: 5000,

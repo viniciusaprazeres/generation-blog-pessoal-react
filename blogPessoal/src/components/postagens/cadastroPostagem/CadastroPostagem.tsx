@@ -30,7 +30,7 @@ function CadastroPostagem() {
 
   const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
-  );
+  )
 
   const usuarioId = useSelector<TokenState, TokenState['id']>(
     (state) => state.id

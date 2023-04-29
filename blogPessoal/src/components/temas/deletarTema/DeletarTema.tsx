@@ -3,10 +3,12 @@ import { Grid, Typography, Button, Card, Box } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 import { Tema } from "../../../models/Tema";
 
 import { deleteId, getId } from "../../../services/Service";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 import './DeletarTema.css'
 
@@ -14,7 +16,9 @@ function DeletarTema() {
 
   const history = useNavigate();
 
-  const [token, setToken] = useLocalStorage("token");
+  const token = useSelector<TokenState, TokenState["token"]>(
+    (state) => state.token
+  );
 
   const { id } = useParams<{ id: string }>();
 
