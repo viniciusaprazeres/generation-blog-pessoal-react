@@ -21,7 +21,7 @@ function Home() {
 
   useEffect(() => {
     if (token === "") {
-      toast.warn('Você precisa estar logado.', {
+      toast.warn("Você precisa estar logado.", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -30,7 +30,7 @@ function Home() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
       history("/login");
     }
   }, [token]);
@@ -80,11 +80,7 @@ function Home() {
           </Box>
         </Grid>
         <Grid item xs={6}>
-          <img
-            src="https://i.imgur.com/XEmGzkd.png"
-            alt=""
-            className="imagemHome"
-          />
+          <img alt="" className="imagemHome" />
         </Grid>
         <Grid xs={12} style={{ backgroundColor: "white" }}>
           <TabPostagens />

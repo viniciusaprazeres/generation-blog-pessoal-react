@@ -18,8 +18,9 @@
 }
 
 .imagemHome {
+    content: url(https://i.imgur.com/67woj4K.png);
     width: max(350px, 65%);
     margin: 0 auto;
     display: block;
-    transform: rotateY(180deg);
+    /* transform: rotateY(180deg); */
   }

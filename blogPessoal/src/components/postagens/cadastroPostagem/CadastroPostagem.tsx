@@ -12,17 +12,16 @@ import {
 } from "@mui/material";
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from "react-toastify";
-import useLocalStorage from 'react-use-localstorage';
 import { useSelector } from "react-redux";
 
 import { Postagem } from '../../../models/Postagem';
 import { Tema } from '../../../models/Tema';
+import Usuario from "../../../models/Usuario";
 
 import { getAll, getId, put, post } from '../../../services/Service';
 import { TokenState } from "../../../store/tokens/tokensReducer";
 
 import './CadastroPostagem.css';
-import Usuario from "../../../models/Usuario";
 
 function CadastroPostagem() {
 
