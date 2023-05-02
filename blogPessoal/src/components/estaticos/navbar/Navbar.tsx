@@ -40,10 +40,10 @@ function Navbar() {
 
   return (
     <>
-      <AppBar position="static">
-        <Toolbar variant="dense">
+      {/* <AppBar position="static">
+        <Toolbar variant="dense"> */}
           <Box display={"flex"} justifyContent={"space-between"} width={"100%"}>
-            <Link to={"/home"}>
+            <Link to={"/home"} className="text-decoration-none">
               <Box className="cursor">
                 <Typography variant="h5" color="inherit">
                   BlogPessoal
@@ -56,9 +56,9 @@ function Navbar() {
               justifyContent="start"
               className="text-decoration-none"
             >
-              <Link to={"/perfildousuario"}>
+              <Link to={"/perfildousuario"} className="text-decoration-none">
                 <Box mx={1} className="cursor">
-                  <Typography variant="h6" color="inherit">
+                  <Typography variant="h6">
                     Perfil
                   </Typography>
                 </Box>
@@ -66,7 +66,7 @@ function Navbar() {
 
               <Link to={"/postagens"} className="text-decoration-none">
                 <Box mx={1} className="cursor">
-                  <Typography variant="h6" color="inherit">
+                  <Typography variant="h6">
                     Postagens
                   </Typography>
                 </Box>
@@ -93,8 +93,8 @@ function Navbar() {
               </Box>
             </Box>
           </Box>
-        </Toolbar>
-      </AppBar>
+        {/* </Toolbar>
+      </AppBar> */}
     </>
   );
 }

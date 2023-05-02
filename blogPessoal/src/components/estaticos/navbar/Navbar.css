@@ -1,14 +1,13 @@
-
 .titulo {
     color: cyan;
 }
 
 .cursor {
     cursor: pointer;
-    color: white;
+    color: #565147;
 }
 
 .text-decoration-none {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
