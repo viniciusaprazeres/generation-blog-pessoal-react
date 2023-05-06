@@ -12,3 +12,7 @@
     background-size: cover;
     min-height: 100vh;
 }
+
+.botaoLogar {
+    background-color: #D4A373 !important;
+}
